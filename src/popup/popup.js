@@ -26,13 +26,19 @@ async function search(event) {
 	let proxy = `https://cors-anywhere.herokuapp.com/`;
 	let metaurl = `https://nhentai.net/api/gallery/${num}`;
 	let regex = /\d+/g;
+	let extensionType = {
+		p: 'png',
+		j: 'jpg'
+	};
 	if (regex.test(num) && num !== null && num !== undefined) {
 		try {
 			let data = await fetch(proxy + metaurl).then(response => response.json());
 			let id = data.media_id;
 			let title = data.title.english;
 			let tags = resolveTags(data.tags);
-			let coverurl = `https://t.nhentai.net/galleries/${id}/cover.jpg`;
+			let extension = data.images.cover.t;
+			extension = extensionType[extension];
+			let coverurl = `https://t.nhentai.net/galleries/${id}/cover.${extension}`;
 			let link = `https://nhentai.net/g/${num}/`;
 			updatePage(title, tags, coverurl, link);
 		} catch (error) {
