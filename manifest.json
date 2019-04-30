@@ -1,24 +1,17 @@
 {
 	"manifest_version": 2,
-	"name": "nHentai number linker",
-	"description": "Convert normal number into lewd URL",
-	"version": "0.1.0",
+	"name": "nHentai finder",
+	"description": "Popup nHentai analyzer",
+	"version": "1.0.0",
 	"author": "Boomber",
 	"icons": {
 		"16": "src/16-icon.png",
 		"48": "src/48-icon.png",
 		"128": "src/128-icon.png"
 	},
-	"content_scripts": [
-		{
-			"matches": [
-				"https://www.reddit.com/r/*"
-			],
-			"js": ["src/content.js"]
-		}
-	],
 	"browser_action": {
-		"default_icon": "src/128-icon.png"
+		"default_icon": "src/128-icon.png",
+		"default_popup": "src/popup/popup.html"
 	},
 	"offline_enabled": true
 }
